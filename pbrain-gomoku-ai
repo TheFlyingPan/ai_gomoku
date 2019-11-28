@@ -1,0 +1,241 @@
+#!/usr/bin/python3
+# coding: utf-8
+from random import randint
+from sys import stdout, exit
+
+class protocol:
+
+    board = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    timeout_turn = 0
+    timeout_match = 0
+    max_memory = 0
+    time_left = 0
+    game_type = 0
+    rule = 0
+    evaluate = 0
+    folder = 0
+    managerinput = []
+    infotext = "name=bonsoir, author=Lucasito et Aurélien\n"
+    x, y = randint(0,14), randint(0,14)
+    def __init__(self):
+        self.startGame()
+
+
+    def startGame(self):
+        while True:
+            managerinput = input().split(" ")
+            self.function_table[managerinput[0]](self, managerinput)
+
+#########################################################################
+                    # FONCTIONS UTILES #
+#########################################################################
+
+    def START(self, var):
+        if var[1] == "19":
+            stdout.write("OK\n")
+            stdout.flush()
+        else:
+            stdout.write("ERROR message - unsuported size or other error")
+            stdout.flush()
+            protocol.END(self, var)
+    
+    def TURN(self, var):
+        coor = var[1].split(",")
+        x = int(coor[0])
+        y = int(coor[1])
+        self.board[x][y] = 2
+        protocol.PLAY(self, var)
+
+
+
+    def BOARD(self, var):
+        for i in range(18):
+            for j in range(18):
+                self.board[i][j] = 0
+        move = input().split(",")
+        while str(move) != "DONE":
+            self.board[int(move[0])][int(move[1])] = int(move[2])
+            move = input().split(",")
+        protocol.PLAY(self, var)
+
+    def BEGIN(self, var):
+        protocol.PLAY(self, var)
+
+    def END(self, var):
+        pass
+        exit(0)
+        return
+
+    def ABOUT(self, var):
+        stdout.write(self.infotext)
+        stdout.flush()
+
+    def display(self, var):
+        for i in range(0,18):
+            print(self.board[i])
+            
+
+#########################################################################
+                        # FONCTION BRAIN #
+#########################################################################
+
+    # def brain_start(self):
+
+#########################################################################
+                        # FONCTION RANDOM PLAY #
+#########################################################################
+
+    def playRand(self):
+        x, y = randint(0,18), randint(0,18)
+        if protocol.isFree(self, x, y):
+            print(str(x) + "," + str(y))
+            stdout.flush()
+        else:
+            protocol.playRand(self)
+        return
+    
+    def set_new_xy(self):
+        var = 0
+        self.x, self.y = randint(0,14), randint(0,14)
+        protocol.PLAY(self, var)
+
+    def PLAY(self, var):
+        # self.x, self.y = randint(0,18), randint(0,18)
+        if protocol.isFree(self, self.x, self.y):
+            self.board[self.x][self.y] = 1
+            # stdout.write(str(x) + "," + str(y) + "\n")
+            print(str(self.x) + "," + str(self.y))
+            self.x = self.x + 1
+            self.y = self.y + 1
+            stdout.flush()
+        else:
+            protocol.PLAYREV(self)
+
+    def PLAYREV(self):
+        self.x = self.x - 1
+        self.y = self.y - 1
+        if not protocol.isOpp(self, self.x, self.y):
+            if protocol.isFree(self, self.x, self.y) and self.x >= 0 and self.y >= 0:
+                self.board[self.x][self.y] = 1
+                # stdout.write(str(x) + "," + str(y) + "\n")
+                print(str(self.x) + "," + str(self.y))
+                self.x = self.x + 1
+                self.y = self.y + 1
+                stdout.flush()
+            else:
+                protocol.PLAYREV(self)
+        else:
+            protocol.set_new_xy(self)
+
+    def isOpp(self, x, y):
+        if self.board[x][y] == int(2):
+            return True
+        else:
+            return False
+
+    def isMe(self, x, y):
+        if self.board[x][y] == int(1) or self.board[x][y] == int(0):
+            return True
+        else:
+            return False
+
+    def isFree(self, x, y):
+        if self.board[x][y] == int(0):
+            return True
+        else:
+            return False
+
+#########################################################################
+                        # FONCTION INFO #
+#########################################################################
+
+    def INFO(self, var):
+        if not var:
+            return
+        tag = str(var[1])
+        self.info_table[tag](self, var) if tag in self.info_table else print("ERROR message - Unknown info = ignored")
+
+    def infoTimeoutTurn(self, val):
+        self.timeout_turn = val
+        return
+    
+    def infoTimeoutMatch(self, var):
+        self.timeout_match = var
+        return
+    
+    def infoMaxmemory(self, var):
+        self.max_memory = var
+        return
+    
+    def infoTimeLeft(self, var):
+        self.time_left = var
+        return
+    
+    def infoGameType(self, var):
+        self.game_type = var
+        return
+
+    def infoRule(self, var):
+        self.rule = var
+        return
+    
+    def infoEvaluate(self, var):
+        self.evaluate = var
+        return
+
+    def infoFolder(self, var):
+        self.rule = var
+        return
+        
+#########################################################################
+                        # TABLES DE FONCTION #
+#########################################################################
+    
+    info_table = {
+        "timeout_turn":infoTimeoutTurn,
+        "timeout_match":infoTimeoutMatch,
+        "max_memory":infoMaxmemory,
+        "time_left":infoTimeLeft,
+        "game_type":infoGameType,
+        "rule":infoRule,
+        "evaluate":infoEvaluate,
+        "folder":infoFolder
+    }
+
+    function_table = {
+        "START":START,
+        "TURN":TURN,
+        "BEGIN":BEGIN,
+        "BOARD":BOARD,
+        "INFO":INFO,
+        "END":END,
+        "ABOUT":ABOUT,
+        "display":display,
+        "PLAY":PLAY
+    }
+
+def main():
+	protocol()
+	return(0)
+	
+if __name__ == "__main__":
+	main()
