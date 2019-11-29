@@ -5,7 +5,10 @@ from sys import stdout, exit
 
 class protocol:
 
-    board = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+    h = 19
+    board = [[0 for i in range(19)] for j in range(19)]
+
+    board3 = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -50,13 +53,14 @@ class protocol:
 #########################################################################
 
     def START(self, var):
-        if var[1] == "19":
+        self.h = int(var[1])
+        self.board = [[0 for i in range(self.h)] for j in range(self.h)]
+        if self.h <= 100:
             stdout.write("OK\n")
             stdout.flush()
         else:
             stdout.write("ERROR message - unsuported size or other error")
             stdout.flush()
-            protocol.END(self, var)
     
     def TURN(self, var):
         coor = var[1].split(",")
@@ -64,8 +68,6 @@ class protocol:
         y = int(coor[1])
         self.board[x][y] = 2
         protocol.PLAY(self, var)
-
-
 
     def BOARD(self, var):
         for i in range(18):
@@ -234,8 +236,8 @@ class protocol:
     }
 
 def main():
-	protocol()
-	return(0)
-	
+    protocol()
+    return(0)
+
 if __name__ == "__main__":
-	main()
+    main()
