@@ -42,20 +42,15 @@ class protocol:
     def __init__(self):
         self.startGame()
 
-
     def startGame(self):
         while True:
             managerinput = input().split(" ")
             self.function_table[managerinput[0]](self, managerinput)
 
-#########################################################################
-                    # FONCTIONS UTILES #
-#########################################################################
-
     def START(self, var):
         self.h = int(var[1])
         self.board = [[0 for i in range(self.h)] for j in range(self.h)]
-        if self.h <= 100:
+        if self.h <= 100 and self.H >= 5:
             stdout.write("OK\n")
             stdout.flush()
         else:
@@ -67,7 +62,7 @@ class protocol:
         x = int(coor[0])
         y = int(coor[1])
         self.board[x][y] = 2
-        protocol.PLAY(self, var)
+        protocol.PLAY(self)
 
     def BOARD(self, var):
         for i in range(18):
@@ -95,17 +90,7 @@ class protocol:
         for i in range(0,18):
             print(self.board[i])
             
-
-#########################################################################
-                        # FONCTION BRAIN #
-#########################################################################
-
-    # def brain_start(self):
-
-#########################################################################
-                        # FONCTION RANDOM PLAY #
-#########################################################################
-
+            
     def playRand(self):
         x, y = randint(0,18), randint(0,18)
         if protocol.isFree(self, x, y):
@@ -120,7 +105,7 @@ class protocol:
         self.x, self.y = randint(0,14), randint(0,14)
         protocol.PLAY(self, var)
 
-    def PLAY(self, var):
+    def PLAY(self):
         # self.x, self.y = randint(0,18), randint(0,18)
         if protocol.isFree(self, self.x, self.y):
             self.board[self.x][self.y] = 1
@@ -166,9 +151,6 @@ class protocol:
         else:
             return False
 
-#########################################################################
-                        # FONCTION INFO #
-#########################################################################
 
     def INFO(self, var):
         if not var:
@@ -208,9 +190,6 @@ class protocol:
         self.rule = var
         return
         
-#########################################################################
-                        # TABLES DE FONCTION #
-#########################################################################
     
     info_table = {
         "timeout_turn":infoTimeoutTurn,
