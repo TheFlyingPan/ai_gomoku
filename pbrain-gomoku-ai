@@ -46,13 +46,12 @@ class protocol:
 
 
     def START(self, var):
-        if var[1] == "19":
+        if int(var[1]) >= 5 and int(var[1]) <= 100:
             stdout.write("OK\n")
             stdout.flush()
         else:
             stdout.write("ERROR message - unsuported size or other error")
             stdout.flush()
-            protocol.END(self, var)
     
     def TURN(self, var):
         coor = var[1].split(",")
