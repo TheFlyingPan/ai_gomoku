@@ -4,25 +4,29 @@ from sys import stdout, exit
 
 class protocol:
 	
-    board = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    board = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
     timeout_turn = 0
     timeout_match = 0
@@ -35,15 +39,15 @@ class protocol:
     managerinput = []
     infotext = "name=bonsoir, author=Lucasito et Aurélien\n"
     x, y = randint(0,14), randint(0,14)
+    moveBuffer = [0, 0, 0]
+
     def __init__(self):
         self.startGame()
-
 
     def startGame(self):
         while True:
             managerinput = input().split(" ")
             self.function_table[managerinput[0]](self, managerinput)
-
 
     def START(self, var):
         if int(var[1]) >= 5 and int(var[1]) <= 100:
@@ -58,9 +62,7 @@ class protocol:
         x = int(coor[0])
         y = int(coor[1])
         self.board[x][y] = 2
-        protocol.PLAY(self, var)
-
-
+        protocol.checkBoard(self)
 
     def BOARD(self, var):
         for i in range(18):
@@ -70,10 +72,10 @@ class protocol:
         while move[0] != "DONE":
             self.board[int(move[0])][int(move[1])] = int(move[2])
             move = input().split(",")
-        protocol.PLAY(self, var)
+        protocol.checkBoard(self)
 
     def BEGIN(self, var):
-        protocol.PLAY(self, var)
+        protocol.checkBoard(self)
 
     def END(self, var):
         pass
@@ -86,8 +88,7 @@ class protocol:
 
     def display(self, var):
         for i in range(0,18):
-            print(self.board[i])
-            
+            print(self.board[i])     
 
     def playRand(self):
         x, y = randint(0,18), randint(0,18)
@@ -149,6 +150,107 @@ class protocol:
         else:
             return False
 
+    def checkBoard(self):
+        self.moveBuffer = [0,0,0]
+        for i in range(19):
+            for j in range(19):
+                if self.board[i][j] == 0:
+                    protocol.check2(self, i, j)
+        protocol.playSoft(self)
+    
+    def playSoft(self):
+        if self.moveBuffer[2] > 500:
+            self.board[self.moveBuffer[0]][self.moveBuffer[1]] = 1
+            print(str(self.moveBuffer[0]) + "," + str(self.moveBuffer[1]))
+            stdout.flush()
+        else:
+            protocol.PLAY(self, 1)
+        return
+
+    points = [5, 500, 50000]
+    save = [0,0,0,0,0,0,0,0,0]
+
+    def check2(self, x, y):
+        self.save = [0,0,0,0,0,0,0,0,0]
+        buf = 0
+        if self.board[x + 1][y] == 2 and self.board[x + 2][y] == 2:
+            buf += self.points[0]
+            self.save[1] = 1
+        if self.board[x + 1][y + 1] == 2 and self.board[x + 2][y + 2] == 2:
+            buf += self.points[0]
+            self.save[2] = 1
+        if self.board[x][y + 1] == 2 and self.board[x][y + 2] == 2:
+            buf += self.points[0]
+            self.save[3] = 1
+        if self.board[x - 1][y + 1] == 2 and self.board[x - 2][y + 2] == 2:
+            buf += self.points[0]
+            self.save[4] = 1
+        if self.board[x - 1][y] == 2 and self.board[x - 2][y] == 2:
+            buf += self.points[0]
+            self.save[5] = 1
+        if self.board[x - 1][y - 1] == 2 and self.board[x - 2][y - 2] == 2:
+            buf += self.points[0]
+            self.save[6] = 1
+        if self.board[x][y - 1] == 2 and self.board[x][y - 2] == 2:
+            buf += self.points[0]
+            self.save[7]
+        if self.board[x + 1][y - 1] == 2 and self.board[x + 2][y - 2] == 2:
+            buf += self.points[0]
+            self.save[8] = 1
+        protocol.check3(self, x, y, buf)
+        return
+
+    def check3(self, x, y, buf):
+        if self.board[x + 3][y] == 2 and self.save[1] == 1:
+            buf += self.points[1]
+            self.save[1] = 2
+        if self.board[x + 3][y + 3] == 2 and self.save[2] == 1:
+            buf += self.points[1]
+            self.save[2] = 2
+        if self.board[x][y + 3] == 2 and self.save[3] == 1:
+            buf += self.points[1]
+            self.save[3] = 2
+        if self.board[x - 3][y + 3] == 2 and self.save[4] == 1:
+            buf += self.points[1]
+            self.save[4] = 2
+        if self.board[x - 3][y] == 2 and self.save[5] == 1:
+            buf += self.points[1]
+            self.save[5] = 2
+        if self.board[x - 3][y - 3] == 2 and self.save[6] == 1:
+            buf += self.points[1]
+            self.save[6] = 2
+        if self.board[x][y - 3] == 2 and self.save[7] == 1:
+            buf += self.points[1]
+            self.save[7] = 2
+        if self.board[x + 3][y - 3] == 2 and self.save[8] == 1:
+            buf += self.points[1]
+            self.save[8] = 2
+        protocol.check4(self, x, y, buf)
+        return
+
+    def check4(self, x, y, buf):
+        if self.board[x + 4][y] == 2 and self.save[1] == 2:
+            buf += self.points[2]
+        if self.board[x + 4][y + 4] == 2 and self.save[2] == 2:
+            buf += self.points[2]
+        if self.board[x][y + 4] == 2 and self.save[3] == 2:
+            buf += self.points[2]
+        if self.board[x - 4][y + 4] == 2 and self.save[4] == 2:
+            buf += self.points[2]
+        if self.board[x - 4][y] == 2 and self.save[5] == 2:
+            buf += self.points[2]
+        if self.board[x - 4][y - 4] == 2 and self.save[6] == 2:
+            buf += self.points[2]
+        if self.board[x][y - 4] == 2 and self.save[7] == 2:
+            buf += self.points[2]
+        if self.board[x + 4][y - 4] == 2 and self.save[8] == 2:
+            buf += self.points[2]
+        protocol.replaceCoor(self, x, y, buf)
+        return
+    
+    def replaceCoor(self, x, y, buf):
+        if buf > self.moveBuffer[2]:
+            self.moveBuffer = [x, y, buf]
 
     def INFO(self, var):
         if not var:
